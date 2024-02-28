@@ -175,16 +175,4 @@ document.addEventListener("DOMContentLoaded", function criarMenu() {
     elatualizacao.style.color = 'rgb(59, 59, 59)';
     elatualizacao.style.fontSize = '0.9em';
 
-
-    /*
-    footer > a:hover {
-        font-size: 1em;
-        position: relative;
-        color: rgb(167, 11, 167);
-    }
-    
-    */
-
-
-
 });

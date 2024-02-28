@@ -9,21 +9,23 @@ body {
   
 
 #antena {
-    float: right;
-    width: 56px;
-    height: 81px;
+    width: 40px;
+    height: 60px;
     padding: 5px;
 }
 
 div#cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-image: linear-gradient(to bottom, black, var(--cor-3));
     box-shadow: 3px 3px 30px 5px rgb(89, 37, 212);
+    height: 80px;
 }
 
 div#cabecalho > h1 {
     color: var(--cor-5);
     text-shadow: 3px 3px 10px #e0a50288;
-    padding-top: 20px;
 }
 
 
@@ -36,7 +38,7 @@ div#conteudo {
 main h2 {
     background-color: rgb(255, 255, 255);
     color: var(--cor-2);
-    font-size: 1.1em;
+    font-size: 1em;
     padding: 4px 4px 2px 4px;
     text-align: center;
     border-radius: 8px;
@@ -72,7 +74,7 @@ main label {
 
 .indexador {  /*botões */
     margin: auto;
-    height: 120px;
+    height: 80px;
     width: 110px;
     border-radius: 8px;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.39);
@@ -87,10 +89,11 @@ main label {
 
 button > h3 {
     margin: 0px;
+    font-size: 1em;
 }
 
 #divalvo {
-    padding: 20px 5px;
+    padding: 10px 5px;
 }
 
 #divalvo h4 {
@@ -121,6 +124,8 @@ h4 > strong {
 
 #divdatas {
     display: flex;
+    text-align: center;
+    justify-content: center;
     margin-bottom: 18px;
 }
 
@@ -146,21 +151,20 @@ h4 > strong {
 }
 
 #operadoras {
-    padding: 3px 0px 3px 100px;
-   
+    display: flex;
+    align-items: center;
 }
 
 .operadoras {
-    margin-top: 15px;
+    margin-left: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.274);
 }
 
 div#prazo {
-    text-align: center;
-    margin: 0px 30px 0px 50px;
-    padding: 3px 10px 3px 10px;
+    text-align: right;
+    margin: 5px 0px 0px 40px;
 }
 
-div#prazo > h2 {
-
-}    
+#inpprazo {
+    width: 40px;
+}
