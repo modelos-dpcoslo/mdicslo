@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function criarMenu() {
     elfooter.appendChild(elsugestoes);
 
     let elatualizacao = document.createElement('em');
-    elatualizacao.innerText = "\nAtualizado em: 10/08/2023 (Stang)";
+    elatualizacao.innerText = "\nAtualizado em: 28/02/2024 (Stang)";
     elfooter.appendChild(elatualizacao);
 
     // configura CSS do rodape
