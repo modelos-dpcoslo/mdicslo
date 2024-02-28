@@ -32,29 +32,29 @@ function nomePolicial() {
     const elpolicial = document.querySelector('#policial')
     const valpolicial = elpolicial.value
     switch (valpolicial) {
-        case 'ass':
-            varsiglapolicial = 'ASS';
-            varemailpolicial = '"alderson-salgado@pc.sc.gov.br" e '
+        case 'avar':
+            varsiglapolicial = 'AVAR';
+            varemailpolicial = '"andre-avanci@pc.sc.gov.br" e "regis-stang@pc.sc.gov.br" '
             break;
         case 'gab':
             varsiglapolicial = 'GAB';
-            varemailpolicial = ''
+            varemailpolicial = 'regis-stang@pc.sc.gov.br '
             break;
-        case 'vls':
-            varsiglapolicial = 'VLS';
-            varemailpolicial = '"vander-stang@pc.sc.gov.br" e '
+        case 'dm':
+            varsiglapolicial = 'DM';
+            varemailpolicial = '"demostenes-menin@pc.sc.gov.br" e "regis-stang@pc.sc.gov.br" '
             break;
-        case 'svp':
-            varsiglapolicial = 'SVP';
-            varemailpolicial = '"sidney-palavezzini@pc.sc.gov.br" e '
+        case 'jrp':
+            varsiglapolicial = 'JRP';
+            varemailpolicial = '"jeferson-pereira@pc.sc.gov.br" e "regis-stang@pc.sc.gov.br" '
             break;
-        case 'dbn':
-            varsiglapolicial = 'DBN';
-            varemailpolicial = '"dimas-netto@pc.sc.gov.br" e '
+        case 'prpg':
+            varsiglapolicial = 'PRPG';
+            varemailpolicial = '"paulo-graff@pc.sc.gov.br" e "regis-stang@pc.sc.gov.br" '
             break;
-        case 'am':
-            varsiglapolicial = 'AM';
-            varemailpolicial = '"almir-matte@pc.sc.gov.br" e '
+        case 'mpb':
+            varsiglapolicial = 'MPB';
+            varemailpolicial = '"marcelo-bezerra@pc.sc.gov.br" e "regis-stang@pc.sc.gov.br" '
             break;       
     } 
 
