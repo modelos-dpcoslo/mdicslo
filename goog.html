@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GERAR OFÍCIO - OPERADORAS</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/goog.css">
+    
+</head>
+<body>
+    
+    <div>
+        <main id="conteudo">
+            <div id="cabecalho">
+                <img src="icones/google.png" alt="Google" id="imggoogle">
+                <h1>DADOS CADASTRAIS<BR>- GOOGLE -</h1>
+            </div>
+            <div id="conteudo">
+                <h2>DADOS DO OFÍCIO</h2>
+                <div class ='dadosinicial'>
+                    <span>
+                        <label>Número do ofício:</label><br>
+                        <input type="number" id="inpoficio" title="DIGITE O NÚMERO DO OFÍCIO" class="dadosof">
+                    </span>
+                    <span>
+                    <label>Responsável:</label><br>
+                    <select name="policial" id="policial" class="dadosof">
+                        <option value="gab">GAB</option>
+                        <option value="avar">AVAR</option>
+                        <option value="dm">DM</option>
+                        <option value="jrp">JRP</option>
+                        <option value="prpg">PRPG</option>
+                        <option value="mpb">MPB</option>
+                    </select>
+                    </span>
+                </div>
+                <label>Procedimento:</label>
+                <input type="text" id="inporigem" value="Boletim de Ocorrência xxx.2023.xxxxx" title="BO / IP / APF">
+                
+                <div id="divbotoesindexador" class="dadosinicial">     
+                    <!-- INSERIR OPÇÕES DE PESQUISA -->
+                    <input type="text" name="alvoadd" id="alvoadd"><br>
+                    <input type="button" value="ADD +" id="addalvo">
+                </div>
+                <div id="listaalvos">
+                    (IMEI) 123.456.789.123; (E-MAIL) teste@gmail.com; (IMEI) 123.456.789.123; (E-MAIL) teste@gmail.com; (IMEI) 123.456.789.123; (E-MAIL) teste@gmail.com;
+                </div>
+                <div id="divdatas">
+                    <span class="sdatas">
+                        <label>Início:</label><br>
+                        <input type="date" name="datainicio" id="datainicio" class="inpdata">
+                    </span>
+                    <span class="sdatas">
+                        <label>Fim:</label><br>
+                        <input type="date" name="datafim" id="datafim" class="inpdata">
+                    </span>
+                    <span class="sdatas inpdata">
+                        <label>Prazo:</label><br>
+                        <input type="number" id="inpprazo" title="PRAZO PARA RESPOSTA" class="dadosof" value="5">
+                    </span>
+                </div>
+        
+        
+        
+            <div id="fim">
+                <button onclick="generate()" id="gerardocx">GERAR OFÍCIO .DOCX</button>
+                <br>
+                
+                </div>
+        </main>
+    </div>
+    
+    <footer id="rodape"></footer>
+</body>
+
+<!-- inicio de carregamento dos script necessários para abri modelo .DOCX e salvar resultado-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.37.11/docxtemplater.js"></script>
+<script src="https://unpkg.com/pizzip@3.1.4/dist/pizzip.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+<script src="https://unpkg.com/pizzip@3.1.4/dist/pizzip-utils.js"></script>
+<!-- fim de carregamento dos scripts necessários-->
+
+<!-- Carregar SCRIPTS comuns dos geradores de ofícios-->
+<script src="js/comuns.js"></script>
+<script src='js/menu.js'></script>
+<script>
+    // ELEMENTO ALVO SERÁ USADO POR VÁRIOS SCRIPTS
+    elalvo = document.querySelector('#alvo'); 
+
+
+    /* SCRIPT para CAPTURAR DADOS DOS FORMULÁRIO */
+    function capturarDados() {
+        // Capturar número do OFÍCIO
+        eloficio = document.querySelector('#inpoficio')
+        valoficio = eloficio.value      
+
+        // Capturar nome e e-mail do policial   (variáveis GLOBAIS criadas na própria função)
+        nomePolicial();
+                
+        // Capturar procedimento de Origem BO/IP
+        elorigem = document.querySelector('#inporigem');
+        valorigem = elorigem.value;
+        
+        // Gerar DATA atual
+        valdatareq = obterData();
+
+        // Capturar  ALVO ( cpf | imei | sim card)
+        valalvo = elalvo.value;
+
+        // Capturar PERÍODO da requisição
+        obterPeriodo();
+
+        // Capturar o PRAZO para resposta
+        elprazo = document.querySelector('#inpprazo');
+        valprazo = elprazo.value;
+
+    }
+
+    /* FIM DO SCRIPT para CAPTURAR DADOS DOS FORMULÁRIO. */
+       
+    
+
+    function loadFile(url, callback) {
+        PizZipUtils.getBinaryContent(url, callback);
+    }
+    window.generate = function generate() {
+        loadFile(
+            "modelos/mofgoog.docx",
+            function (error, content) {
+                if (error) {
+                    throw error;
+                }
+                const zip = new PizZip(content);
+                const doc = new window.docxtemplater(zip, {
+                    paragraphLoop: true,
+                    linebreaks: true,
+                });
+
+                // Executa a função para capturar os dados do formulário
+                capturarDados();
+                
+                
+                // RENDERIZAR O DOCUMENTO (Troca {insoficio} do modelo .docx pelo valor de valoficio, e assim por diante ...)
+                doc.render({
+                    insoficio: valoficio,
+                    insano: ano,
+                    inspolicial: varsiglapolicial,
+                    insorigem: valorigem, 
+                    insdata: valdatareq,
+                    insassunto: valassunto,
+                    insdadosreq: valdadosreq,
+                    instipo: valtipoalvo,
+                    insalvo: valalvo,
+                    insdatainicio: valdatain,
+                    insdatafim: valdatafim,
+                    insprazo: valprazo                    
+                });
+
+                const blob = doc.getZip().generate({
+                    type: "blob",
+                    mimeType:
+                        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    // compression: DEFLATE adds a compression step.
+                    // For a 50MB output document, expect 500ms additional CPU time
+                    compression: "DEFLATE",
+                });
+                
+                
+                // Output the document using Data-URI
+                let nomefinal = 'Oficio-' + valoficio + '-' + ano + '-' +       varsiglapolicial + '-OPERADORA';
+                saveAs(blob, nomefinal + "_.docx");
+                window.alert('Ofício gerado! Enviar pela Plataforma LERS!\n\n');
+                
+                
+            }
+        );
+    };
+    
+</script>
+</html>
+
+

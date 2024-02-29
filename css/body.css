@@ -14,7 +14,7 @@ body {
     margin: 0px;
     font-family: "Roboto", sans-serif;
     text-align: left;
-    font-size: 13pt;
+    font-size: 12pt;
     background-color: rgb(0, 0, 0);
     color: black;
 }
@@ -38,11 +38,11 @@ div#cabecalho > h1 {
 }
 
 input:hover {
-    background-color: #cdfb4e2e;
+    border-color: red;
 }
 
 input:focus {
-    caret-color: red;
+    caret-color: red;   
 }
 
 #gerardocx {

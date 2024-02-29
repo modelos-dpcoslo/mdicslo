@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function criarMenu() {
     ellinkgoogle.appendChild(elbotaogoogle);
     elbotaogoogle.appendChild(elimggoogle);
     elbotaogoogle.appendChild(elh3google);
-    ellinkgoogle.href = '####################';
+    ellinkgoogle.href = 'goog.html';
     elbotaogoogle.className = 'botaolink';
     elh3google.className = 'nomelink';
     elimggoogle.src = 'icones/google.png';
