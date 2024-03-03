@@ -1,3 +1,130 @@
+
+body {  
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 98%, rgb(255, 0, 0)); 
+    color: white;
+  }
+  
+
+#imggoogle {
+    width: 100px;
+    margin-left: -35px;
+}
+
+div#cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, rgb(19, 19, 19), var(--cor-3));
+    box-shadow: 3px 3px 10px 3px rgba(212, 37, 37, 0.982);
+    height: 80px;
+}
+
+div#cabecalho > h1 {
+    color: var(--cor-5);
+    text-shadow: 3px 3px 10px #e0a50248;
+}
+
+div#conteudo {
+
+    background: linear-gradient(to right, rgb(12, 12, 12) 40%, rgb(53, 53, 53));
+    padding: 0px 10px 10px 10px;
+    border-radius: 5px 5px 15px 15px;
+    box-shadow: 3px 3px 5px rgb(22, 22, 22);
+}
+
+.dadosinicial {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+main h2 {
+    background-color: rgb(113, 112, 112);
+    color: rgb(255, 174, 174);
+    font-size: 0.8em;
+    padding: 4px 4px 2px 4px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+main label {
+    font-size: 0.9em;
+}
+
+.dadosof {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: var(--cor-4);
+    padding: 4px 5px;
+    width: 90px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#inporigem {
+    font-size: 1.12em;
+    font-weight: bold;
+    color: var(--cor-4);
+    padding: 5px 5px 2px 5px;
+    margin-bottom: 18px;
+    width: 370px;
+    text-align: center;
+}
+
+#divbotoesindexador {
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
+}
+
+#alvoadd {
+    width: 250px;
+    height: 30px;
+}
+
+#addalvo {
+    background-color: rgb(58, 225, 58);
+    padding: 15px 25px;
+    border-radius: 20px;
+    color: white;
+    text-shadow: 1;
+    font-weight: bolder;
+    box-shadow: 3px 5px 2px 1px black;
+    translate: -3px -3px;  
+}
+
+#addalvo:hover {
+    translate: 0px 0px;    
+    box-shadow: none;
+}
+
+#addalvo:active {
+    box-shadow: 0px 0px 20px 5px rgb(249, 1, 1);;
+}
+
+#listaalvos {
+    color: rgb(197, 195, 195);
+    font-size: 0.8em;
+    background: rgb(68, 68, 68);
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+#divdatas {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.sdatas {
+    margin: 5px auto;
+}
+
+.inpdata {
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--cor-4);
     padding: 2px 3px;
     width: 130px;
     height: 30px;
