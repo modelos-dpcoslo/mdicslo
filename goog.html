@@ -41,11 +41,14 @@
                 
                 <div id="divbotoesindexador" class="dadosinicial">     
                     <!-- INSERIR OPÇÕES DE PESQUISA -->
-                    <input type="text" name="alvoadd" id="alvoadd"><br>
-                    <input type="button" value="ADD +" id="addalvo">
+                    <input type="text" name="alvoadd" id="alvoadd" placeholder="Informe aqui o alvo (IMEI ou e-mail)">
+                    <input type="button" value="ADD +" id="addalvo" onclick="addalvo()">
                 </div>
-                <div id="listaalvos">
-                    (IMEI) 123.456.789.123; (E-MAIL) teste@gmail.com; (IMEI) 123.456.789.123; (E-MAIL) teste@gmail.com; (IMEI) 123.456.789.123; (E-MAIL) teste@gmail.com;
+                <div id="caixalog">
+                    <div id="divlimpar"><input type="button" value="Limpar alvos" id="limparalvos" onclick="limparalvos()"></div>
+                    <div id="listaalvos">
+                        Os alvos adicionados serão exibidos aqui!
+                    </div>
                 </div>
                 <div id="divdatas">
                     <span class="sdatas">
@@ -57,7 +60,7 @@
                         <input type="date" name="datafim" id="datafim" class="inpdata">
                     </span>
                     <span class="sdatas inpdata">
-                        <label>Prazo:</label><br>
+                        <label>Prazo: (dias)</label><br>
                         <input type="number" id="inpprazo" title="PRAZO PARA RESPOSTA" class="dadosof" value="5">
                     </span>
                 </div>
@@ -87,14 +90,41 @@
 <script src='js/menu.js'></script>
 <script>
     // ELEMENTO ALVO SERÁ USADO POR VÁRIOS SCRIPTS
-    elalvo = document.querySelector('#alvo'); 
+    elalvo = document.querySelector('#listaalvos'); 
+
+    // Função para adicionar ALVOS
+    let alvos = [];
+    
+    function addalvo() {
+        eladd = document.querySelector('#alvoadd');
+        
+        if (eladd.value.includes("@")) {
+            alvos.push('E-mail: "'+ eladd.value+'"');
+        } else {
+            alvos.push('IMEI n. "'+ eladd.value+'"');
+        }
+        eladd.value = "";
+
+        elalvo.innerText = alvos;
+        let quebralinhas = elalvo.innerText.replace(/,/g, '\n');
+        elalvo.innerText = quebralinhas;
+        // 
+    }
+    // FIM da função para adionar alvos
+
+    // Função para limpar lista de alvos
+    function limparalvos() {
+        alvos = [];
+        elalvo.innerText = "Os alvos adicionados serão exibidos aqui!";
+
+    }
 
 
     /* SCRIPT para CAPTURAR DADOS DOS FORMULÁRIO */
     function capturarDados() {
         // Capturar número do OFÍCIO
-        eloficio = document.querySelector('#inpoficio')
-        valoficio = eloficio.value      
+        eloficio = document.querySelector('#inpoficio');
+        valoficio = eloficio.value;      
 
         // Capturar nome e e-mail do policial   (variáveis GLOBAIS criadas na própria função)
         nomePolicial();
@@ -107,7 +137,7 @@
         valdatareq = obterData();
 
         // Capturar  ALVO ( cpf | imei | sim card)
-        valalvo = elalvo.value;
+        valalvo = elalvo.innerText;
 
         // Capturar PERÍODO da requisição
         obterPeriodo();
@@ -149,9 +179,6 @@
                     inspolicial: varsiglapolicial,
                     insorigem: valorigem, 
                     insdata: valdatareq,
-                    insassunto: valassunto,
-                    insdadosreq: valdadosreq,
-                    instipo: valtipoalvo,
                     insalvo: valalvo,
                     insdatainicio: valdatain,
                     insdatafim: valdatafim,
@@ -169,7 +196,7 @@
                 
                 
                 // Output the document using Data-URI
-                let nomefinal = 'Oficio-' + valoficio + '-' + ano + '-' +       varsiglapolicial + '-OPERADORA';
+                let nomefinal = 'Oficio-' + valoficio + '-' + ano + '-' +       varsiglapolicial + '-GOOGLE';
                 saveAs(blob, nomefinal + "_.docx");
                 window.alert('Ofício gerado! Enviar pela Plataforma LERS!\n\n');
                 

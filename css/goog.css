@@ -1,6 +1,5 @@
 
 body {  
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 98%, rgb(255, 0, 0)); 
     color: white;
   }
   
@@ -28,6 +27,7 @@ div#conteudo {
 
     background: linear-gradient(to right, rgb(12, 12, 12) 40%, rgb(53, 53, 53));
     padding: 0px 10px 10px 10px;
+    margin-bottom: 30px;
     border-radius: 5px 5px 15px 15px;
     box-shadow: 3px 3px 5px rgb(22, 22, 22);
 }
@@ -60,6 +60,14 @@ main label {
     margin-bottom: 10px;
 }
 
+#inpoficio {
+    border-radius: 5px;
+}
+
+#policial {
+    border-radius: 5px;
+}
+
 #inporigem {
     font-size: 1.12em;
     font-weight: bold;
@@ -68,27 +76,32 @@ main label {
     margin-bottom: 18px;
     width: 370px;
     text-align: center;
+    border-radius: 5px;
 }
 
 #divbotoesindexador {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 10px auto;
 }
 
 #alvoadd {
     width: 250px;
     height: 30px;
+    padding: 0px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
 #addalvo {
-    background-color: rgb(58, 225, 58);
+    background-color: rgb(41, 182, 41);
     padding: 15px 25px;
     border-radius: 20px;
     color: white;
     text-shadow: 1;
     font-weight: bolder;
-    box-shadow: 3px 5px 2px 1px black;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.46);
     translate: -3px -3px;  
 }
 
@@ -101,13 +114,37 @@ main label {
     box-shadow: 0px 0px 20px 5px rgb(249, 1, 1);;
 }
 
-#listaalvos {
+#caixalog {
+    display: flex;
     color: rgb(197, 195, 195);
     font-size: 0.8em;
     background: rgb(68, 68, 68);
     border-radius: 20px;
     padding: 10px;
     margin-top: 5px;
+}
+
+#divlimpar {
+    align-self: center;
+}
+
+#limparalvos {
+    background-color: rgb(200, 26, 26);
+    padding: 7px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 1px 1px 1ch 1px rgba(0, 0, 0, 0.745);
+}
+
+#listaalvos {
+    justify-self: center;
+    width: 270px;
+    background-color: rgba(210, 28, 28, 0.392);
+    padding: 10px;
+    margin-left: 15px;
+    border-radius: 10px;
+    color: white;
+    text-shadow: 1;
 }
 
 #divdatas {
@@ -138,6 +175,7 @@ div#prazo {
 }
 
 #inpprazo {
+    margin-top: 3px;
     width: 40px;
 }
 
